@@ -1,8 +1,6 @@
-from pathlib import Path
-
 import yaml
 
-__data_file = Path.resolve(Path.cwd() / '../helpers/data/test_number.yml')
+__data_file = 'helpers/data/test_number.yml'
 
 
 def generate_test_number_data() -> list[list[int, int, str]]:
