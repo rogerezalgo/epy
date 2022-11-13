@@ -2,7 +2,7 @@ name: Python application unit testing
 
 on:
   push:
-    branches: "*"
+    branches: main/**
   pull_request:
     branches: [ "main" ]
 
