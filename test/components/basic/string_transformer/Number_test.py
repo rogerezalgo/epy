@@ -13,12 +13,12 @@ def test_should_translate_number_correctly(int_number: int, representation: int,
 
 
 @pytest.mark.parametrize('invalid_num', [-1])
-def test_should_raise_exception_if_constructor_got_invalid_parameter(invalid_num):
+def test_should_raise_value_error_if_constructor_got_invalid_parameter(invalid_num):
     with pytest.raises(ValueError):
         Number(invalid_num)
 
 
 @pytest.mark.parametrize('invalid_scale', [1, 36])
-def test_should_raise_exception_if_translate_unexpected_number(invalid_scale):
+def test_should_raise_value_error_if_translate_unexpected_number(invalid_scale):
     with pytest.raises(ValueError):
         Number(125846).translate_number_with_basis(invalid_scale)
