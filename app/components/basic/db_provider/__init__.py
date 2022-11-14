@@ -1,0 +1,1 @@
+from .get_chars_from_db import get_chars_from_db
