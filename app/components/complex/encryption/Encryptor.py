@@ -1,6 +1,8 @@
 from app.components.basic.db_provider import get_chars_from_db
 from app.components.basic.string_transformer import Number
 from helpers import get_random_number
+from system.classes import StringBuilder
+from system.constants import EMPTY_STRING
 
 
 class Encryption:
@@ -8,7 +10,7 @@ class Encryption:
         self.__entry_text = plain_text
 
         self.__database: dict[str, str] = get_chars_from_db()
-        self.__str_database: str = ''.join(self.__database.values())
+        self.__str_database: str = EMPTY_STRING.join(self.__database.values())
         self.__encryption_key: list[int] = self.__get_encryption_key(len(self.__str_database))
         self.__translated_key: list[str] = self.__get_translated_collection(self.__encryption_key)
         self.__hashed_database: list[str] = self.__get_hashed_database(self.__str_database, self.__encryption_key)
@@ -86,9 +88,13 @@ class Encryption:
         notation_scale = enc_coll.pop(0)
         spaces = self.__define_spaces(int(notation_scale))
 
-        outer_text_with_spaces = [notation_scale]  # Start with notation scale needs for decryption
+
+        outer_text_with_spaces = StringBuilder(f'{notation_scale}')  # Start with notation scale needs for decryption
 
         for ch in enc_coll:
             outer_text_with_spaces.append(ch + spaces[get_random_number(0, len(spaces))].upper())
 
-        return ''.join(outer_text_with_spaces[:len(outer_text_with_spaces) - 1])
+
+        outer_text_str = outer_text_with_spaces.to_str()
+
+        return EMPTY_STRING.join(outer_text_str[:len(outer_text_str) - 1])
