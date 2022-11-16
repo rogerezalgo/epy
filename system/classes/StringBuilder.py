@@ -19,35 +19,35 @@ class StringBuilder:
 
     def to_str(self) -> str:
         """
-            Returns a string representation of StringBuilder
+            Returns a string representation of the sequence
         """
 
         return EMPTY_STRING.join(self.__text)
 
     def append(self, string: str) -> None:
         """
-            Inserts param "string" at the end of the buffer
+            Inserts param "string" at the end of the sequence
         """
 
         self.__text.append(string)
 
     def prepend(self, string: str) -> None:
         """
-            Inserts param "string" at the start of the buffer
+            Inserts param "string" at the start of the sequence
         """
 
         self.__text.insert(0, string)
 
     def shift(self) -> None:
         """
-            Removes the first element from the buffer
+            Removes the first element from the sequence
         """
 
         self.__text.pop(0)
 
     def pop(self) -> None:
         """
-            Removes the last element of the buffer
+            Removes the last element from the sequence
         """
 
         self.__text.pop()
