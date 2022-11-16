@@ -88,13 +88,11 @@ class Encryption:
         notation_scale = enc_coll.pop(0)
         spaces = self.__define_spaces(int(notation_scale))
 
-
-        outer_text_with_spaces = StringBuilder(f'{notation_scale}')  # Start with notation scale needs for decryption
+        outer_text_sequence = StringBuilder(f'{notation_scale}')  # Start with notation scale needs for decryption
 
         for ch in enc_coll:
-            outer_text_with_spaces.append(ch + spaces[get_random_number(0, len(spaces))].upper())
+            outer_text_sequence.append(ch + spaces[get_random_number(0, len(spaces))].upper())
 
+        outer_text_str = outer_text_sequence.to_str()
 
-        outer_text_str = outer_text_with_spaces.to_str()
-
-        return EMPTY_STRING.join(outer_text_str[:len(outer_text_str) - 1])
+        return EMPTY_STRING.join(outer_text_str[:-1])
