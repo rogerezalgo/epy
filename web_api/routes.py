@@ -1,10 +1,15 @@
-from flask import Flask, request, abort
+from flask import Flask, request, abort, render_template
 
 from app.components.complex.decryption import Decryption
 from app.components.complex.encryption import Encryption
 from system.constants import HttpStatus
 
 app = Flask(__name__)
+
+
+@app.get('/')
+def show_stub():
+    return render_template('stub.html')
 
 
 @app.post('/encrypt')
